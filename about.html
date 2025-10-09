@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja"><!-- ▼ 多言語対応時はlang属性を変更OK -->
+<head>
+    <!-- ▼ メタ情報（タイトルやdescriptionは編集OK／meta要素の構造は変更NG） -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Markdown Starter Template</title>
+
+    <!-- ▼ 共通スタイル（パスは固定のため変更NG） -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="about-body"><!-- ▼ ページ固有の背景を切り替える場合はクラスを追加OK -->
+    <header class="site-header">
+        <!-- ▼ ヘッダー構造（index.htmlと同じ構成を維持／テキストは編集OK） -->
+        <div class="site-header__inner">
+            <a class="site-brand" href="index.html">Markdown Starter</a>
+            <nav class="site-nav" aria-label="サイト内主要リンク">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="?article=article1.md">Sample1</a></li><!-- ▼ Sample1：表示する記事に合わせてhrefを変更OK -->
+                    <li><a href="?article=article2.md">Sample2</a></li><!-- ▼ Sample2：表示する記事に合わせてhrefを変更OK -->
+                    <li><a href="about.html" aria-current="page">About</a></li><!-- ▼ 現在地を示す属性（削除NG） -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="about-main">
+        <!-- ▼ ページリード（文章は編集OK／h1タグは残す） -->
+        <section class="about-hero">
+            <h1>テンプレートについて</h1>
+            <p>このページでは、運営者のプロフィールとサイトの目的をまとめて掲載しています。文章を書き換えるだけで自己紹介ページとして活用できます。</p>
+        </section>
+
+        <!-- ▼ セクション1：管理者プロフィール（テキストは編集OK／セクション構造は変更NG） -->
+        <section class="about-block">
+            <h2>管理者プロフィール</h2>
+            <p class="about-block__lead">ここではサイト管理者の基本情報や担当領域を紹介します。必要に応じて項目を追加・削除してください。</p>
+            <div class="about-info">
+                <p><!-- ▼ 自己紹介文は自由に編集OK -->
+                    Markdown Starter Templateを運営する管理者は、Markdownを活用した情報発信と静的サイト構築を支援しています。ドキュメント整備や学習コンテンツの制作を得意としています。
+                </p>
+                <dl class="about-info__list">
+                    <div>
+                        <dt>名前</dt>
+                        <dd>山田 太郎（仮名）<!-- ▼ 実際のプロフィールに合わせて編集OK --></dd>
+                    </div>
+                    <div>
+                        <dt>役割</dt>
+                        <dd>フロントエンドエンジニア / テクニカルライター</dd>
+                    </div>
+                    <div>
+                        <dt>得意分野</dt>
+                        <dd>Markdown整備、静的サイト構築、ドキュメント改善</dd>
+                    </div>
+                    <div>
+                        <dt>連絡先</dt>
+                        <dd>contact@example.com</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ▼ セクション2：このサイトについて（文章は編集OK／二段構成を維持） -->
+        <section class="about-block">
+            <h2>このサイトについて</h2>
+            <p class="about-block__lead">当サイトの目的やコンテンツ構成、想定読者をまとめています。自分のサイト方針に合わせて書き換えてください。</p>
+            <div class="about-info">
+                <p>
+                    このテンプレートは、Markdownファイルをブラウザ上でHTMLに変換し、素早く記事を公開できるようにする学習用プロジェクトです。難しい構築作業を省き、本文作成とデザイン調整に集中できるよう設計しています。
+                </p>
+                <ul class="about-info__bullets">
+                    <li>対象読者：Markdown初心者、静的サイトを作ってみたい学習者</li>
+                    <li>提供内容：書き方ガイド、変換スクリプト、レイアウトサンプル</li>
+                    <li>カスタマイズ：`css/style.css`で色や余白を変更し、不要なブロックは削除可能</li>
+                </ul>
+                <p>
+                    今後はサンプル記事の追加やレイアウトバリエーションの拡充を予定しています。更新情報はトップページのカードや記事一覧で案内します。
+                </p>
+            </div>
+        </section>
+
+        <!-- ▼ 補足セクション（追記やFAQを置く場所。文章・リストは編集OK） -->
+        <section class="about-notes">
+            <h2>運用メモ</h2>
+            <ul>
+                <li>Markdownファイルを追加したら、必要に応じてこのページの説明も更新してください。</li>
+                <li>問い合わせフォームを設置する場合は、外部サービスと連携して`action`属性などを適宜設定してください。</li>
+                <li>色味を変えたい場合は`css/style.css`内の`--color-`変数を調整すると手早く印象を変えられます。</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <small>© 2024 Markdown Starter Template</small>
+    </footer>
+</body>
+</html>

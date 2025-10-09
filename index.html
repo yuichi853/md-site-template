@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja" class="mode-landing"><!-- ▼ 初期状態はトップページを表示するためmode-landingを付与（削除NG） -->
+
+<head>
+    <!-- ▼ サイト共通の基本設定（タイトルや説明文は編集OK／metaタグの構造は変更NG） -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Starter Template</title>
+
+    <!-- ▼ スタイルシート読み込み（ファイル名は固定のため変更NG／色や余白はcss/style.css側で調整OK） -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ▼ Markdown変換用スクリプト（変更NG） -->
+    <script defer src="assets/marked.min.js"></script>
+    <script defer src="js/main.js"></script><!-- main.jsは記事読み込みに必須なので削除NG -->
+
+    <!-- ▼ コードブロックのシンタックスハイライト用CDN（コードを使わない場合は削除OK） -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@catppuccin/highlightjs@1.0.1/css/catppuccin-frappe.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+
+    <script>
+        // ▼ URLにarticleパラメータがある場合は記事モードに切り替える処理（削除・関数名変更NG）
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const htmlEl = document.documentElement;
+            if (params.get("article")) {
+                htmlEl.classList.remove("mode-landing");
+                htmlEl.classList.add("mode-article");
+            } else {
+                htmlEl.classList.remove("mode-article");
+                htmlEl.classList.add("mode-landing");
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="site-header">
+        <!-- ▼ ヘッダー全体（背景色やロゴ文字は編集OK／クラス名と階層構造は変更NG） -->
+        <div class="site-header__inner">
+            <a class="site-brand" href="index.html">Markdown Starter</a><!-- ▼ テキストは編集OK／a要素削除NG -->
+            <nav class="site-nav" aria-label="サイト内主要リンク"><!-- ▼ ナビゲーション（リンク先のURLと文言は編集OK／liの数と順序は要件通り維持） -->
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="?article=article1.md">Sample1</a></li><!-- ▼ Sample1：表示したい記事名があればhrefを変更OK -->
+                    <li><a href="?article=article2.md">Sample2</a></li><!-- ▼ Sample2：表示したい記事名があればhrefを変更OK -->
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="landing-page" class="landing">
+            <!-- ▼ トップページヒーロー（文章・ボタン文言は編集OK／大枠のdiv構造は変更NG） -->
+            <div class="landing-hero">
+                <span class="landing-tag">はじめてのMarkdownサイト</span>
+                <h1 class="landing-title">Markdown Webサイト制作サンプル</h1>
+                <p class="landing-lead">
+                    このテンプレートは、MarkdownファイルをHTMLに変換して公開するための最小構成です。文章を書くことに集中しつつ、Webページとして見やすく整った状態で配信できます。下のテンプレート例を参考に、必要なブロックだけ残して自由にカスタマイズすることができます。
+                </p>
+
+                <p class="landing-lead">
+                    まずはレイアウトを崩さずにテキストを書き換えてみましょう。慣れてきたらCSSを編集して、自分だけのデザインに仕上げてください。</p>
+                <div class="landing-actions">
+                    <a class="btn-primary" href="?article=article1.md">サンプル記事１</a><!-- ▼ リンク先は編集OK／クラス名変更NG -->
+                    <a class="btn-secondary" href="?article=article2.md">サンプル記事２</a>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：3カラム（カードの数・テキストは編集OK／親要素のクラス名は変更NG） -->
+            <div class="landing-section">
+                <h2 class="section-title">3カラムのカード例</h2>
+                <p class="landing-lead">用途に合わせてカードを複製・削除してください。画像は`articles/images`内のファイルに差し替え可能です。</p>
+                <div class="layout-grid">
+                    <article class="layout-grid__item">
+                        <img src="articles/images/sample.jpg" alt="サンプル画像1"><!-- ▼ 画像パスは編集OK／img要素自体は残す -->
+                        <h3>トピックのまとめ</h3>
+                        <p>Markdownで作成したノートやチュートリアルを、視認性の高いカード形式で紹介できます。</p>
+                    </article>
+                    <article class="layout-grid__item">
+                        <img src="articles/images/sample.jpg" alt="サンプル画像2">
+                        <h3>テンプレート配布</h3>
+                        <p>テンプレートの使い方やカスタマイズTipsを3ポイントに分けて掲載すると便利です。</p>
+                    </article>
+                    <article class="layout-grid__item">
+                        <img src="articles/images/sample.jpg" alt="サンプル画像3">
+                        <h3>更新情報</h3>
+                        <p>新しい記事やバージョンアップの内容を短くまとめて表示できます。</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：1カラム縦積み（要素の並び替えOK／クラス名は変更NG） -->
+            <div class="landing-section">
+                <h2 class="section-title">ストーリー形式の紹介</h2>
+                <div class="layout-stack">
+                    <article class="layout-stack__item layout-stack__item--highlight">
+                        <h3>1. アイデアをまとめる</h3>
+                        <p>文章の骨組みをMarkdownで作り、見出しごとに役割を決めます。必要に応じて画像の差し込み位置もメモしておきましょう。</p>
+                    </article>
+                    <article class="layout-stack__item">
+                        <h3>2. テンプレートに差し込む</h3>
+                        <p>`articles`フォルダにファイルを保存すれば、ページ上で自動的に整形されます。必要に応じてこのブロックを複製してください。</p>
+                    </article>
+                    <article class="layout-stack__item">
+                        <h3>3. デザインを整える</h3>
+                        <p>`css/style.css`で色や余白、角丸を調整すると雰囲気が変わります。落ち着いた色味で統一すると安心感のある仕上がりになります。</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：左右分割（テキスト・画像は編集OK／grid構造は変更NG） -->
+            <div class="landing-section">
+                <h2 class="section-title">画像と文章の組み合わせ</h2>
+                <div class="layout-split panel-soft">
+                    <div class="layout-split__image">
+                        <img src="articles/images/sample.jpg" alt="作業風景の例"><!-- ▼ 写真は差し替えOK -->
+                    </div>
+                    <div class="layout-split__text">
+                        <h3>見やすい構成で魅力を伝える</h3>
+                        <p>左側にビジュアル、右側に詳しい説明文を配置する定番レイアウトです。サービス紹介やプロジェクトの背景説明に向いています。</p>
+                        <p>ボックス全体の背景色を変えたい場合は`panel-soft`クラスを参照し、CSS側で色を調整してください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：ギャラリー（figcaption内テキストは編集OK／画像枚数は自由） -->
+            <div class="landing-section">
+                <h2 class="section-title">画像ギャラリー</h2>
+                <div class="layout-gallery">
+                    <figure>
+                        <img src="articles/images/sample.jpg" alt="資料サンプルA"><!-- ▼ 画像差し替えOK -->
+                        <figcaption>Markdownで作成した資料を、視覚的に整理して掲載できます。</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="articles/images/sample.jpg" alt="資料サンプルB">
+                        <figcaption>画像の下に短い説明文を添えるだけで、ワークフローや成果物を共有しやすくなります。</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="articles/images/sample.jpg" alt="資料サンプルC">
+                        <figcaption>気に入った構成だけ残し、不要なカードは削除してください。</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="articles/images/sample.jpg" alt="資料サンプルD">
+                        <figcaption>画像サイズは自動で整うため、縦横比が異なる写真も扱えます。</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：モザイク（grid-template-areasの構造は維持／項目追加はOK） -->
+            <div class="landing-section">
+                <h2 class="section-title">モザイク状のレイアウト</h2>
+                <div class="layout-mosaic">
+                    <article class="layout-mosaic__item layout-mosaic__wide">
+                        <h3>プロジェクト概要</h3>
+                        <p>幅広スペースに経緯や目標をまとめることで、はじめて訪れた読者にも伝わりやすくなります。</p>
+                    </article>
+                    <article class="layout-mosaic__item layout-mosaic__side">
+                        <h3>スケジュール</h3>
+                        <p>短いリストや箇条書きで進捗を整理できます。必要ならリストやボタンを追加してください。</p>
+                    </article>
+                    <article class="layout-mosaic__item layout-mosaic__bottom">
+                        <img src="articles/images/sample.jpg" alt="成果物のイメージ">
+                        <p>フッタ位置に画像や補足資料を置いて、閲覧者の想像を助けます。ここにリンクボタンを追加するのもおすすめです。</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- ▼ レイアウトバリエーション：CTA（テキストやボタンは編集OK／2カラム構造は維持） -->
+            <div class="landing-section">
+                <div class="layout-cta">
+                    <div class="layout-cta__text">
+                        <h2 class="section-title">アクションエリア</h2>
+                        <p>このセクションは、読者に行動を促すための呼びかけを想定しています。落ち着いた色味のまま、ボタンと文章のバランスを意識しつつ内容だけ書き換えて活用してください。</p>
+                    </div>
+                    <div class="layout-cta__actions">
+                        <a class="btn-primary" href="articles/article1.md">サンプル１</a>
+                        <a class="btn-secondary" href="?article=article2.md">サンプル２</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="article-page" class="article-layout">
+            <!-- ▼ 記事ページ全体の枠（クラス名はJSが利用するため変更NG／テキストは編集不要） -->
+            <aside class="article-layout__toc" aria-label="目次">
+                <div class="toc-box">
+                    <p class="toc-title">目次</p>
+                    <div id="article-toc"></div><!-- ▼ JSが自動で目次を挿入するため中身編集NG -->
+                </div>
+            </aside>
+            <article class="article-layout__content">
+                <header class="article-header">
+                    <h1 id="article-title" class="article-title"></h1><!-- ▼ 初期表示のタイトルは編集OK -->
+                    <p id="article-date" class="article-date"></p><!-- ▼ JSが日付を入れるので空欄のままにする（手動編集NG） -->
+                </header>
+                <div id="content" class="article-body">
+                    <p>読み込み中です…</p><!-- ▼ ローディング文は編集OK／div自体の削除NG -->
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <!-- ▼ フッター表記（文言は編集OK／small要素は残す） -->
+        <small>© 2024 Markdown Starter Template</small>
+    </footer>
+</body>
+
+</html>

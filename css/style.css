@@ -1,0 +1,825 @@
+/* =========================================
+   ▼ カラーテーマと余白の基準値（数値は編集OK／変数名は変更NG）
+   ========================================= */
+:root {
+    --color-bg: #eef3f7;
+    /* ▼ 背景色（柔らかな色に変更OK） */
+    --color-surface: #ffffff;
+    /* ▼ カード背景（明るく保てば変更OK） */
+    --color-border: #d5dde7;
+    /* ▼ 枠線色（淡いグレー系で調整OK） */
+    --color-text: #1f2937;
+    /* ▼ 本文文字色（読みやすさを損なわない範囲で変更OK） */
+    --color-muted: #6b7280;
+    /* ▼ 補足テキスト色（濃淡調整OK） */
+    --color-accent: #4d7ea8;
+    /* ▼ アクセントカラー（落ち着いた寒色系に変更OK） */
+    --color-accent-soft: #dce8f4;
+    /* ▼ アクセントの淡色（好みの薄色へ変更OK） */
+    --radius-large: 18px;
+    /* ▼ 大きめの角丸（サイズ調整OK） */
+    --radius-medium: 12px;
+    /* ▼ 中程度の角丸（サイズ調整OK） */
+    --layout-max-width: 1120px;
+    /* ▼ 記事最大幅（要件のため変更NG） */
+    --space-section: 3.5rem;
+    /* ▼ セクション間余白（好みで編集OK） */
+}
+
+/* ▼ 総合的なリセット（marginの初期化は編集NG／font-familyは好みに応じて編集OK） */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Hiragino Sans", "Yu Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   ▼ ヘッダーとナビゲーション（背景色・余白は編集OK／flex構造は変更NG）
+   ========================================= */
+.site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.site-brand {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.site-nav a {
+    color: var(--color-text);
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   ▼ ランディングページ表示切替（display値は変更NG）
+   ========================================= */
+#landing-page {
+    display: none;
+}
+
+#article-page {
+    display: none;
+}
+
+.mode-landing #landing-page {
+    display: block;
+}
+
+.mode-landing #article-page {
+    display: none;
+}
+
+.mode-article #landing-page {
+    display: none;
+}
+
+.mode-article #article-page {
+    display: grid;
+}
+
+/* =========================================
+   ▼ トップページのレイアウト（余白・フォントサイズは編集OK／クラス名は変更NG）
+   ========================================= */
+.landing {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--space-section) 1.5rem;
+}
+
+.landing-hero {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    box-shadow: 0 18px 40px rgba(45, 64, 89, 0.08);
+    /* ▼ 影の強さは落ち着いた範囲で調整OK */
+}
+
+.landing-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background-color: var(--color-accent-soft);
+    padding: 0.2rem 0.9rem;
+    border-radius: 999px;
+}
+
+.landing-title {
+    margin: 1.2rem 0 0.8rem;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    line-height: 1.25;
+}
+
+.landing-lead {
+    margin: 0 0 1.8rem;
+    color: var(--color-muted);
+    font-size: 1.02rem;
+}
+
+.landing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+/* ▼ 主ボタンの色（背景色は編集OK／border: noneは変更NG） */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border: none;
+}
+
+/* ▼ サブボタンの色（枠線・文字色は編集OK／display指定は変更NG） */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.85;
+}
+
+/* =========================================
+   ▼ ランディング共通の柔らかい装飾（クラス名は自由に追加OK／削除NG）
+   ========================================= */
+.panel-soft {
+    background: linear-gradient(135deg, rgba(77, 126, 168, 0.08), rgba(255, 255, 255, 0.9));
+    /* ▼ グラデーション色は編集OK */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+}
+
+.landing-section {
+    margin-top: var(--space-section);
+}
+
+.section-title {
+    font-size: 1.6rem;
+    margin: 0 0 1.5rem;
+}
+
+.feature-list {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.feature-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+    /* ▼ アニメーション不要なら削除OK */
+}
+
+.feature-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.feature-card p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+}
+
+.step-list {
+    counter-reset: step;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.step-list li {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+}
+
+.step-list h3 {
+    margin: 0 0 0.75rem;
+}
+
+.step-list p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.landing-callout {
+    margin-top: var(--space-section);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(20, 30, 60, 0.04);
+}
+
+.landing-callout p {
+    margin: 0 0 1.2rem;
+    color: var(--color-muted);
+}
+
+/* =========================================
+   ▼ ランディング用レイアウトバリエーション（ブロックの追加・順序変更OK／クラス名は維持）
+   ========================================= */
+.layout-grid {
+    display: grid;
+    gap: 1.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.layout-grid__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.layout-grid__item img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-medium);
+}
+
+.layout-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.layout-stack__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.layout-stack__item--highlight {
+    background: linear-gradient(135deg, rgba(77, 126, 168, 0.12), rgba(255, 255, 255, 0.9));
+}
+
+.layout-split {
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: center;
+}
+
+.layout-split__image img {
+    width: 100%;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--color-border);
+}
+
+.layout-split__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    color: var(--color-text);
+}
+
+.layout-gallery {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.layout-gallery figure {
+    margin: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.layout-gallery figcaption {
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.layout-mosaic {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-areas:
+        "wide wide side"
+        "wide wide side"
+        "bottom bottom bottom";
+}
+
+.layout-mosaic__wide {
+    grid-area: wide;
+}
+
+.layout-mosaic__side {
+    grid-area: side;
+}
+
+.layout-mosaic__bottom {
+    grid-area: bottom;
+}
+
+.layout-mosaic__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.layout-mosaic__item img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-medium);
+}
+
+.layout-cta {
+    background: linear-gradient(135deg, rgba(77, 126, 168, 0.15), rgba(255, 255, 255, 0.95));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2.4rem 2.3rem;
+    display: grid;
+    gap: 1.8rem;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: center;
+}
+
+.layout-cta__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 460px; /* ▼ 説明文の横幅（文章が長い場合は調整OK） */
+}
+
+.layout-cta__text p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.layout-cta__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.layout-cta__actions a {
+    min-width: 180px; /* ▼ ボタン幅（使いやすいサイズで調整OK） */
+    text-align: center;
+}
+
+/* =========================================
+   ▼ Aboutページ専用スタイル（クラス名はabout-で統一／必要に応じて追加OK）
+   ========================================= */
+.about-body {
+    background: radial-gradient(circle at top, rgba(77, 126, 168, 0.12), transparent 60%), var(--color-bg);
+}
+
+.about-main {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--space-section) 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-section);
+}
+
+.about-hero {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2.2rem 2rem;
+    box-shadow: 0 16px 36px rgba(45, 64, 89, 0.08);
+}
+
+.about-hero h1 {
+    margin: 0 0 1rem;
+    font-size: 2.2rem;
+}
+
+.about-hero p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.about-block {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2rem;
+    box-shadow: 0 14px 32px rgba(45, 64, 89, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.about-block__lead {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.about-info__list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.about-info__list div {
+    display: grid;
+    grid-template-columns: minmax(0, 140px) 1fr;
+    gap: 0.6rem;
+    align-items: baseline;
+}
+
+.about-info__list dt {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.about-info__list dd {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.about-info__bullets {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--color-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.about-notes {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2rem;
+}
+
+.about-notes h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.about-notes ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--color-muted);
+}
+
+/* =========================================
+   ▼ 記事レイアウト（2:5比率を保つためgrid指定は変更NG／余白は編集OK）
+   ========================================= */
+.article-layout {
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    padding: var(--space-section) 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+    gap: 2rem;
+}
+
+.article-layout__toc {
+    position: relative;
+}
+
+.toc-box {
+    position: sticky;
+    top: 36px; /* ▼ ヘッダーと重ならない程度に上部へ固定（数値調整OK） */
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem 1.25rem;
+}
+
+.toc-title {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+}
+
+#article-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#article-toc a {
+    color: var(--color-text);
+    padding: 0.35rem 0.4rem;
+    border-radius: 6px;
+}
+
+#article-toc a.toc-level-1 {
+    font-weight: 700;
+}
+
+#article-toc a.toc-level-2 {
+    margin-left: 16px;
+}
+
+#article-toc a:hover {
+    background-color: #eaeff8;
+}
+
+.article-layout__content {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 2.25rem 2rem;
+    box-shadow: 0 18px 40px rgba(20, 30, 60, 0.05);
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.article-date {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    text-align: right;
+    font-style: italic;
+}
+
+.article-title {
+    margin: 0;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--color-text);
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.article-body {
+    font-size: 1.02rem;
+    color: var(--color-text);
+}
+
+.article-body p {
+    margin: 1.2rem 0;
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+    margin-top: 2.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.article-body h1 {
+    font-size: 1.8rem;
+    color: #243447;
+    font-weight: 700;
+}
+
+.article-body h2 {
+    font-size: 1.6rem;
+}
+
+.article-body ul,
+.article-body ol {
+    padding-left: 1.5rem;
+}
+
+.article-body blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #eef2fa;
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-medium);
+}
+
+.article-body hr {
+    margin: 3.2rem 0; /* ▼ 区切り線の前後余白（読みやすく調整OK） */
+    border: none;
+    border-top: 1px solid rgba(77, 126, 168, 0.25); /* ▼ 薄い色味で控えめに表示 */
+}
+
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: var(--radius-medium);
+}
+
+pre {
+    background-color: #303446;
+    color: #f8fafc;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-medium);
+    overflow-x: auto;
+}
+
+code {
+    background-color: #e7ecf6;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* =========================================
+   ▼ YouTube埋め込み用の比率調整（高さ計算式は変更NG／色調整は不要）
+   ========================================= */
+.ratio {
+    position: relative;
+    width: 100%;
+}
+
+.ratio::before {
+    content: "";
+    display: block;
+}
+
+.ratio-16x9::before {
+    padding-top: 56.25%;
+}
+
+.ratio iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius-medium);
+}
+
+/* =========================================
+   ▼ フッター（文言はindex.html側で編集／余白や色はここで編集OK）
+   ========================================= */
+.site-footer {
+    padding: 2rem 1.5rem 3rem;
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   ▼ レスポンシブ対応（しきい値は編集OK／display:flex/grid指定は変更NG）
+   ========================================= */
+@media (max-width: 960px) {
+    .site-header__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .toc-box {
+        position: static;
+    }
+
+    .layout-mosaic {
+        grid-template-areas:
+            "wide"
+            "side"
+            "bottom";
+    }
+}
+
+@media (max-width: 600px) {
+    .landing {
+        padding: 2.5rem 1.2rem;
+    }
+
+    .landing-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .article-layout__content {
+        padding: 1.8rem 1.4rem;
+    }
+
+    .article-title {
+        font-size: 1.6rem;
+    }
+
+    .layout-cta {
+        grid-template-columns: 1fr;
+    }
+
+    .layout-cta__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+    }
+
+    .layout-cta__actions a {
+        width: 100%;
+    }
+
+    .about-main {
+        padding: 2.5rem 1.2rem 3rem;
+        gap: 2.5rem;
+    }
+
+    .about-hero,
+    .about-block,
+    .about-notes {
+        padding: 1.6rem 1.4rem;
+    }
+}
