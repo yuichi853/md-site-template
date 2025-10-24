@@ -7,7 +7,7 @@ date: 2025-01-01
 
 これはMarkdownの各種構文の説明と、MarkDownをHTMLに変換した際の表示確認のためのサンプルです
 
-MarkDownの原文ファイルは[こちらのリンクからご覧いただけます](https://github.com/yuichi-853/md-site/blob/main/articles/article1.md?plain=1)。
+MarkDownの原文ファイルは[こちらのリンクからご覧いただけます](https://github.com/yuichi853/md-site-template/blob/main/articles/article1.md?plain=1)。
 
 ---
 
